@@ -30,10 +30,13 @@ def og(nome_arquivo, titulo, linhas, rotulo):
     d = ImageDraw.Draw(im)
     grade(d, W, H)
     d.rectangle([0, 0, W, H], outline=LINE, width=2)
-    # marca
-    d.rounded_rectangle([80, 74, 140, 134], radius=16, fill=INK)
-    d.text((110, 104), "GG", font=fonte(True, 26), fill="white", anchor="mm")
-    d.text((160, 104), "Gabriel Gonçalves", font=fonte(True, 30), fill=INK, anchor="lm")
+    # marca (só o nome)
+    fl, fb = fonte(False, 54), fonte(True, 54)
+    fl = ImageFont.truetype("C:/Windows/Fonts/segoeuil.ttf", 54) if os.path.exists("C:/Windows/Fonts/segoeuil.ttf") else fl
+    wl = d.textlength("Gabriel ", font=fl)
+    d.text((80, 118), "Gabriel", font=fl, fill=INK, anchor="ls")
+    d.text((80 + wl, 118), "Gonçalves", font=fb, fill=INK, anchor="ls")
+    d.ellipse([80 + wl + d.textlength("Gonçalves", font=fb) + 6, 106, 80 + wl + d.textlength("Gonçalves", font=fb) + 18, 118], fill=ACC)
     # título
     y = 200
     for ln in titulo:
@@ -83,7 +86,7 @@ im.save(os.path.join(A, "og-cartao.png"), optimize=True)
 # apple touch icon 180
 ic = Image.new("RGB", (180, 180), INK)
 d = ImageDraw.Draw(ic)
-d.text((90, 88), "GG", font=fonte(True, 78), fill="white", anchor="mm")
-d.ellipse([128, 128, 146, 146], fill=ACC)
+d.text((84, 94), "G", font=fonte(True, 110), fill="white", anchor="mm")
+d.ellipse([118, 112, 138, 132], fill=ACC)
 ic.save(os.path.join(A, "apple-touch-icon.png"), optimize=True)
 print("Imagens geradas em", A)
