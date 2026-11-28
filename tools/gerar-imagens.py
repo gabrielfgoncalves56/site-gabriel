@@ -62,7 +62,7 @@ def og(nome_arquivo, titulo, linhas, rotulo):
     return im, d
 
 def salvar_foto_se_existir(im, d):
-    p = os.path.join(A, "gabriel-avatar-v3.jpg")
+    p = os.path.join(A, "gabriel-avatar-v4.jpg")
     if os.path.exists(p):
         f = Image.open(p).convert("RGB")
         f = ImageOps.fit(f, (190, 190))
