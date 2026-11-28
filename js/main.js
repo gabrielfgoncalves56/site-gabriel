@@ -187,7 +187,7 @@
     var vis = {
       plaquinha: '<img class="pl" loading="lazy" src="assets/plaquinha-azul.webp" alt="Placa de avaliação para o Google">',
       perfil: '<div class="bv-perfil"><div class="gcard"><div class="lg">VC</div><div><b>Sua Empresa</b><div class="stars">' + starsH + '</div></div></div><div class="pchips"><span class="chip on">' + ic('phone') + 'Ligar</span><span class="chip">' + ic('route') + 'Rotas</span><span class="chip">' + ic('globe') + 'Site</span></div></div>',
-      reel: '<div class="reelwrap"><video muted loop playsinline preload="metadata" poster="assets/video/captacao.jpg" aria-label="Captação de fotos e vídeos no local e o resultado final"><source src="assets/video/captacao.mp4" type="video/mp4"></video><span class="phase">Captação</span></div>',
+      reel: '<div class="reelwrap"><video muted loop playsinline preload="metadata" poster="assets/video/captacao-v2.jpg" aria-label="Captação de fotos e vídeos no local e o resultado final"><source src="assets/video/captacao-v2.mp4" type="video/mp4"></video><span class="phase">Captação</span></div>',
       video: '<div class="bv-video"><div class="ph9">' + ic('play') + '</div><i class="prog"></i><span class="chipx">Reels</span></div>',
       foto: '<div class="bv-foto"><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><i class="flash"></i></div>',
       site: '<div class="bv-site"><div class="bar"><i></i><i></i><i></i></div><div class="view"><div class="inner"><div class="hero2"><b></b><u></u><span></span></div><div class="row3"><i></i><i></i><i></i></div><div class="row3"><i></i><i></i><i></i></div></div></div></div>',
