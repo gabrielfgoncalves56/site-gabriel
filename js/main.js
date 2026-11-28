@@ -237,3 +237,74 @@
     }); },{threshold:.4}).observe(v);
   } else { v.controls=true; }
 })();
+
+/* ---- simulação de busca no Google (hero) ---- */
+(function(){
+  var list=document.getElementById('gs-list'); if(!list) return;
+  var qEl=document.getElementById('gs-q'), badge=document.getElementById('gs-badge'), ping=document.getElementById('gs-ping'),
+      tabsEl=document.getElementById('gs-tabs'), box=list.closest('.gs');
+  var SC=[
+    {tab:'Floricultura', q:'floricultura em anápolis', mine:'Floricultura Santana', mi:'FS', o:'Outra floricultura', oi:'OF'},
+    {tab:'Sorveteria', q:'sorveteria em anápolis', mine:'Sorveteria Exemplo', mi:'SE', o:'Outra sorveteria', oi:'OS'},
+    {tab:'Restaurante', q:'restaurante em anápolis', mine:'Restaurante Exemplo', mi:'RE', o:'Outro restaurante', oi:'OR'}
+  ];
+  var RH=80, GAP=10, token=0, idx=0, rows=[], mine=null;
+  var STAR='<svg class="icon"><use href="#i-star"/></svg>';
+  function stars(n){ var h=''; for(var i=0;i<5;i++) h+=STAR.replace('class="icon"','class="icon'+(i<n?'':' off')+'"'); return '<div class="stars">'+h+'</div>'; }
+  function top(i){ return i*(RH+GAP); }
+  function wait(ms,t){ return new Promise(function(r){ setTimeout(function(){ r(t===token); },ms); }); }
+  SC.forEach(function(sc,i){ var c=document.createElement('span'); c.className='chip'; c.textContent=sc.tab; tabsEl.appendChild(c); });
+  function setTab(i){ [].forEach.call(tabsEl.children,function(c,k){ c.classList.toggle('on',k===i); }); }
+  function build(sc){
+    list.innerHTML=''; rows=[];
+    for(var i=0;i<4;i++){
+      var m=(i===3), el=document.createElement('div');
+      el.className='row'+(m?' mine weak':'');
+      el.style.top=top(i)+'px';
+      el.innerHTML='<div class="logo">'+(m?sc.mi:sc.oi)+'</div><div><b>'+(m?sc.mine:sc.o)+'</b>'+stars(m?2:4)+'<small>'+(m?'Perfil incompleto · sem fotos':'Anápolis, GO · Aberto agora')+'</small></div><span class="rank">1º</span>';
+      list.appendChild(el); rows.push(el);
+    }
+    mine=rows[3];
+  }
+  function setBadge(after){ badge.className=after?'after':'before'; badge.textContent=after?'Com o meu trabalho':'Hoje'; }
+  function upgrade(){
+    mine.classList.remove('weak'); mine.classList.add('strong');
+    mine.querySelector('small').textContent='Perfil completo · fotos · Aberto agora';
+  }
+  function place(){ // mine sobe para 1º; os demais descem uma posição
+    mine.style.top=top(0)+'px'; mine.classList.add('top');
+    for(var i=0;i<3;i++) rows[i].style.top=top(i+1)+'px';
+  }
+  async function loop(){
+    var t=++token;
+    while(t===token){
+      var sc=SC[idx]; setTab(idx); build(sc); setBadge(false); ping.classList.remove('show'); qEl.textContent='';
+      for(var i=0;i<sc.q.length;i++){ qEl.textContent=sc.q.slice(0,i+1); if(!await wait(55,t)) return; }
+      if(!await wait(350,t)) return;
+      for(var r=0;r<4;r++){ rows[r].classList.add('in'); if(!await wait(140,t)) return; }
+      if(!await wait(1400,t)) return;
+      setBadge(true); upgrade();
+      var st=mine.querySelectorAll('.stars .icon');
+      for(var k=0;k<5;k++){ st[k].classList.remove('off'); if(!await wait(110,t)) return; }
+      if(!await wait(500,t)) return;
+      place();
+      if(!await wait(1150,t)) return;
+      ping.classList.add('show');
+      if(!await wait(2800,t)) return;
+      ping.classList.remove('show'); rows.forEach(function(el){ el.classList.remove('in'); });
+      if(!await wait(550,t)) return;
+      idx=(idx+1)%SC.length;
+    }
+  }
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(still){
+    box.classList.add('static'); setTab(0); build(SC[0]); qEl.textContent=SC[0].q; setBadge(true); upgrade();
+    [].forEach.call(mine.querySelectorAll('.stars .icon'),function(s){ s.classList.remove('off'); });
+    place(); rows.forEach(function(el){ el.classList.add('in'); }); ping.classList.add('show');
+    return;
+  }
+  setTab(0); build(SC[0]);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ loop(); } else { token++; } }); },{threshold:.25}).observe(document.querySelector('.serp-stage'));
+  } else loop();
+})();
