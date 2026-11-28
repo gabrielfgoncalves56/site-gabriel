@@ -172,3 +172,17 @@
     rv.forEach(function (el) { io.observe(el); });
   } else { rv.forEach(function (el) { el.classList.add('in'); }); }
 })();
+
+/* ---- fluxo animado de avaliações ---- */
+(function(){
+  var f=document.getElementById('flow'); if(!f) return;
+  var scr=[].slice.call(f.querySelectorAll('.scr')), li=[].slice.call(f.querySelectorAll('.steps li')), i=0, t=null;
+  function go(n){ i=n; scr.forEach(function(s,k){ s.classList.toggle('on',k===n); }); li.forEach(function(l,k){ l.classList.toggle('on',k===n); }); }
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function play(){ clearInterval(t); if(still) return; t=setInterval(function(){ go((i+1)%scr.length); }, 3200); }
+  go(0);
+  f.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ go(+b.getAttribute('data-go')); play(); }); });
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ go(0); play(); } else { clearInterval(t); } }); },{threshold:.35}).observe(f);
+  } else play();
+})();
