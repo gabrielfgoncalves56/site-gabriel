@@ -560,3 +560,6 @@ h2{font-size:clamp(1.7rem,4.6vw,2.7rem);max-width:20ch}
 .serp-stage .stage-note{bottom:-26px}
 @media(max-width:480px){.serp-stage{height:490px}}
 .hero{padding-bottom:84px}
+
+.pre{display:flex;align-items:center;gap:12px;font-size:1rem;font-weight:500;color:var(--ink2);margin-bottom:16px;max-width:44ch;line-height:1.4}
+.pre::before{content:"";width:22px;height:1px;background:var(--accent);flex:none}
