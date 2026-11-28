@@ -551,3 +551,5 @@ h2{font-size:clamp(1.7rem,4.6vw,2.7rem);max-width:20ch}
   .fab{display:none}
 }
 .cta small a{color:#c7cbd6}
+
+.vcard .avatar img{object-position:50% 50%}
