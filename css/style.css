@@ -486,3 +486,5 @@ h2{font-size:clamp(1.7rem,4.6vw,2.7rem);max-width:20ch}
 .serp-stage .stage-note{bottom:-22px}
 .gs.static .row,.gs.static .gs-ping,.gs.static .gs-state b,.gs.static .rank{transition:none}
 @media(max-width:480px){.serp-stage{height:500px}.gs{padding:12px}.gs .row{padding:0 10px;gap:10px}}
+
+.plaque img.mesa{aspect-ratio:1/1;max-width:440px;border-radius:28px;box-shadow:0 40px 70px -40px rgba(31,69,245,.55),0 0 0 1px rgba(17,19,24,.06)}
