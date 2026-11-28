@@ -583,3 +583,7 @@ h2{font-size:clamp(1.7rem,4.6vw,2.7rem);max-width:20ch}
 .reelwrap .phase{position:absolute;left:12px;top:12px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.92);border-radius:999px;padding:5px 12px;transition:.3s}
 .reelwrap .phase.res{background:var(--accent);color:#fff}
 @media(max-width:760px){.step-vis.reel{min-height:330px}.reelwrap{height:290px}}
+
+/* foto redonda de novo (a imagem já vem com os braços dentro do círculo) */
+.vcard .avatar{width:124px;height:124px;border-radius:50%}
+.hid-photo{width:68px;height:68px;border-radius:50%}
