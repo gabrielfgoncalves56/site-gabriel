@@ -28,7 +28,7 @@ window.SITE = {
     google:    "Olá, Gabriel! Quero melhorar o perfil da minha empresa no Google.",
     midia:     "Olá, Gabriel! Tenho interesse em fotos e vídeos profissionais para minha empresa.",
     site:      "Olá, Gabriel! Tenho interesse em desenvolver um site para minha empresa.",
-    nfc:       "Olá, Gabriel! Quero conhecer as plaquinhas NFC e QR Code para avaliações.",
+    nfc:       "Olá, Gabriel! Quero conhecer a placa de avaliação do Google (aproximação e QR Code).",
     exemplos:  "Olá, Gabriel! Vi os exemplos no seu site e quero algo parecido para minha empresa.",
     portfolio: "Olá, Gabriel! Vi seu portfólio e gostaria de pedir uma proposta.",
     sobre:     "Olá, Gabriel! Gostaria de conversar sobre o marketing digital da minha empresa.",

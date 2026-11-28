@@ -53,7 +53,7 @@
       texto: 'Quem busca onde comer decide em segundos, olhando fotos, avaliações e o cardápio.',
       hoje: 'Perfil incompleto, fotos escuras e sem cardápio à mão.',
       depois: 'Perfil otimizado, fotos que dão água na boca e uma página com cardápio e pedido pelo WhatsApp.',
-      itens: ['Perfil do Google otimizado (horário, fotos, cardápio)', 'Fotos profissionais dos pratos mais pedidos', 'Vídeo curto para Reels e anúncios', 'Página simples com cardápio e botão de pedido', 'Plaquinha NFC/QR Code na mesa e no caixa'],
+      itens: ['Perfil do Google otimizado (horário, fotos, cardápio)', 'Fotos profissionais dos pratos mais pedidos', 'Vídeo curto para Reels e anúncios', 'Página simples com cardápio e botão de pedido', 'Placa de avaliação na mesa e no caixa'],
       wa: 'Olá, Gabriel! Vi o exemplo de restaurante no seu site e quero algo assim para minha empresa.',
       html: function () {
         return site('seurestaurante.com.br', 'Sabor que faz voltar', 'Cardápio, endereço e pedido em uma só página.', 'Ver cardápio', ['Prato 1', 'Prato 2', 'Prato 3']) +
@@ -80,13 +80,13 @@
       titulo: 'Loja: vitrine aberta o dia todo',
       texto: 'Mostre seus produtos, divulgue ofertas e facilite a avaliação de quem já comprou.',
       hoje: 'Produtos só no balcão e poucos clientes avaliando.',
-      depois: 'Catálogo organizado, ofertas divulgadas e plaquinha na bancada levando o cliente à avaliação.',
-      itens: ['Catálogo de produtos com fotos profissionais', 'Divulgação de ofertas nas redes e no Google', 'Campanhas de tráfego pago para a loja', 'Perfil do Google com produtos cadastrados', 'Plaquinha NFC/QR Code para avaliações'],
+      depois: 'Catálogo organizado, ofertas divulgadas e placa de avaliação na bancada levando o cliente à avaliação.',
+      itens: ['Catálogo de produtos com fotos profissionais', 'Divulgação de ofertas nas redes e no Google', 'Campanhas de tráfego pago para a loja', 'Perfil do Google com produtos cadastrados', 'Placa de avaliação para o cliente avaliar'],
       wa: 'Olá, Gabriel! Vi o exemplo de loja no seu site e quero algo assim para minha empresa.',
       html: function () {
         return site('sualoja.com.br', 'Catálogo e ofertas', 'Produtos organizados e pedido direto no WhatsApp.', 'Ver catálogo', ['Produto 1', 'Produto 2', 'Produto 3']) +
           google('Loja Exemplo', 'Loja', 'Foto da loja', ['Ligar', 'Rotas', 'Produtos']) +
-          '<div class="mk mk-y">' + QR + '<h4>Avalie nossa loja</h4><span class="tag">NFC + QR</span></div>';
+          '<div class="mk mk-y">' + QR + '<h4>Avalie nossa loja</h4><span class="tag">Aproxime ou leia</span></div>';
       }
     },
     {
@@ -185,7 +185,7 @@
     var M = window.MOSTRUARIO || [];
     var starsH = [1, 2, 3, 4, 5].map(function () { return ic('star'); }).join('');
     var vis = {
-      plaquinha: '<img class="pl" loading="lazy" src="assets/plaquinha-azul.webp" alt="Plaquinha NFC e QR Code para avaliações no Google">',
+      plaquinha: '<img class="pl" loading="lazy" src="assets/plaquinha-azul.webp" alt="Placa de avaliação para o Google">',
       perfil: '<div class="bv-perfil"><div class="gcard"><div class="lg">VC</div><div><b>Sua Empresa</b><div class="stars">' + starsH + '</div></div></div><div class="pchips"><span class="chip on">' + ic('phone') + 'Ligar</span><span class="chip">' + ic('route') + 'Rotas</span><span class="chip">' + ic('globe') + 'Site</span></div></div>',
       video: '<div class="bv-video"><div class="ph9">' + ic('play') + '</div><i class="prog"></i><span class="chipx">Reels</span></div>',
       foto: '<div class="bv-foto"><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><i class="flash"></i></div>',
@@ -242,72 +242,79 @@
   } else { v.controls=true; }
 })();
 
-/* ---- simulação de busca no Google (hero) ---- */
+/* ---- simulação de busca no Google (hero): segmentos e nomes fictícios rotativos ---- */
 (function(){
   var list=document.getElementById('gs-list'); if(!list) return;
-  var qEl=document.getElementById('gs-q'), badge=document.getElementById('gs-badge'), ping=document.getElementById('gs-ping'),
-      tabsEl=document.getElementById('gs-tabs'), box=list.closest('.gs');
-  var SC=[
-    {tab:'Floricultura', q:'floricultura em anápolis', mine:'Sua floricultura', mi:'VC', o:'Outra floricultura', oi:'OF'},
-    {tab:'Sorveteria', q:'sorveteria em anápolis', mine:'Sua sorveteria', mi:'VC', o:'Outra sorveteria', oi:'OS'},
-    {tab:'Restaurante', q:'restaurante em anápolis', mine:'Seu restaurante', mi:'VC', o:'Outro restaurante', oi:'OR'}
+  var qEl=document.getElementById('gs-q'), badge=document.getElementById('gs-badge'), ping=document.getElementById('gs-ping'), box=list.closest('.gs');
+  var SEG=[
+    {q:'floricultura', n:['Flores & Cia','Jardim das Rosas','Floricultura Primavera','Bela Flor','Casa das Orquídeas','Floricultura Girassol']},
+    {q:'sorveteria', n:['Sorveteria Doce Neve','Gelatto Palace','Sorveteria Tropical','Cremosa Sorvetes','Polo Gelado','Sorveteria Sabor Real']},
+    {q:'restaurante', n:['Restaurante Sabor da Terra','Cantinho do Sabor','Restaurante Panela Cheia','Casa do Tempero','Restaurante Bom Prato','Sabor de Minas']},
+    {q:'pizzaria', n:['Pizzaria São Carlos','Pizzaria Forno a Lenha','Pizza Nonna','Pizzaria Bella Massa','Cantina Napoli','Pizzaria Dois Irmãos']},
+    {q:'hamburgueria', n:['Burger do Zé','Hamburgueria Brasa','Smash House','Burger Central','Hamburgueria Pé de Serra','Grill & Burger']},
+    {q:'oficina mecânica', n:['Oficina Boa Vista','Auto Center Silva','Mecânica Rápida','Oficina do Marcão','Auto Car Service','Mecânica Três Irmãos']},
+    {q:'loja de roupas', n:['Moda Bella','Boutique Estilo','Loja Vitória Modas','Closet Fashion','Ateliê da Moda','Casa do Look']},
+    {q:'loja de calçados', n:['Calçados Passo Certo','Sapataria Elegance','Casa dos Calçados','Pé de Moça','Calçados Primavera','Sapato Fino']},
+    {q:'farmácia', n:['Farmácia Vida','Drogaria Central','Farmácia Bem Estar','Drogaria Popular','Farmácia Saúde Total','Drogaria São Lucas']},
+    {q:'barbearia', n:['Barbearia Old School','Barber Club','Barbearia do Zé','Navalha de Ouro','Barbearia Estilo','Corte & Cia']},
+    {q:'pet shop', n:['Pet Shop Amigo Fiel','Mundo Pet','Pet Center Patinhas','Casa do Bichinho','Pet & Cia','Cantinho Animal']},
+    {q:'padaria', n:['Padaria Pão Quente','Panificadora Central','Padaria Trigo de Ouro','Padaria Bom Dia','Padaria Dona Maria','Pão & Café']},
+    {q:'clínica odontológica', n:['Odonto Vida','Clínica Sorriso','Odonto Prime','Clínica Dente Feliz','Odonto Center','Sorriso & Saúde']}
   ];
-  var RH=80, GAP=10, token=0, idx=0, rows=[], mine=null;
+  var RH=80, GAP=10, token=0, rows=[], mine=null, queue=[];
   var STAR='<svg class="icon"><use href="#i-star"/></svg>';
   function stars(n){ var h=''; for(var i=0;i<5;i++) h+=STAR.replace('class="icon"','class="icon'+(i<n?'':' off')+'"'); return '<div class="stars">'+h+'</div>'; }
   function top(i){ return i*(RH+GAP); }
   function wait(ms,t){ return new Promise(function(r){ setTimeout(function(){ r(t===token); },ms); }); }
-  SC.forEach(function(sc,i){ var c=document.createElement('span'); c.className='chip'; c.textContent=sc.tab; tabsEl.appendChild(c); });
-  function setTab(i){ [].forEach.call(tabsEl.children,function(c,k){ c.classList.toggle('on',k===i); }); }
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var x=a[i]; a[i]=a[j]; a[j]=x; } return a; }
+  function initials(name){ var w=name.replace(/[&]/g,' ').split(/\s+/).filter(function(x){ return x && !/^(de|da|do|das|dos|e|a|o)$/i.test(x); }); return ((w[0]||'')[0]||'')+((w[1]||'')[0]||''); }
+  function nextScenario(){
+    if(!queue.length) queue=shuffle(SEG);
+    var seg=queue.shift();
+    return {q:seg.q+' em anápolis', others:shuffle(seg.n).slice(0,3)};
+  }
   function build(sc){
     list.innerHTML=''; rows=[];
     for(var i=0;i<4;i++){
-      var m=(i===3), el=document.createElement('div');
+      var m=(i===3), el=document.createElement('div'), nm=m?'Sua empresa':sc.others[i];
       el.className='row'+(m?' mine weak':'');
       el.style.top=top(i)+'px';
-      el.innerHTML='<div class="logo">'+(m?sc.mi:sc.oi)+'</div><div><b>'+(m?sc.mine:sc.o)+'</b>'+stars(m?2:4)+'<small>'+(m?'Perfil incompleto · sem fotos':'Anápolis, GO · Aberto agora')+'</small></div><span class="rank">1º</span>';
+      el.innerHTML='<div class="logo">'+(m?'VC':initials(nm).toUpperCase())+'</div><div><b>'+nm+'</b>'+stars(m?2:4)+'<small>'+(m?'Perfil incompleto · sem fotos':'Anápolis, GO · Aberto agora')+'</small></div><span class="rank">1º</span>';
       list.appendChild(el); rows.push(el);
     }
     mine=rows[3];
   }
   function setBadge(after){ badge.className=after?'after':'before'; badge.textContent=after?'Com o meu trabalho':'Hoje'; }
-  function upgrade(){
-    mine.classList.remove('weak'); mine.classList.add('strong');
-    mine.querySelector('small').textContent='Perfil completo · fotos · Aberto agora';
-  }
-  function place(){ // mine sobe para 1º; os demais descem uma posição
-    mine.style.top=top(0)+'px'; mine.classList.add('top');
-    for(var i=0;i<3;i++) rows[i].style.top=top(i+1)+'px';
-  }
+  function upgrade(){ mine.classList.remove('weak'); mine.classList.add('strong'); mine.querySelector('small').textContent='Perfil completo · fotos · Aberto agora'; }
+  function place(){ mine.style.top=top(0)+'px'; mine.classList.add('top'); for(var i=0;i<3;i++) rows[i].style.top=top(i+1)+'px'; }
   async function loop(){
     var t=++token;
     while(t===token){
-      var sc=SC[idx]; setTab(idx); build(sc); setBadge(false); ping.classList.remove('show'); qEl.textContent='';
-      for(var i=0;i<sc.q.length;i++){ qEl.textContent=sc.q.slice(0,i+1); if(!await wait(55,t)) return; }
+      var sc=nextScenario(); build(sc); setBadge(false); ping.classList.remove('show'); qEl.textContent='';
+      for(var i=0;i<sc.q.length;i++){ qEl.textContent=sc.q.slice(0,i+1); if(!await wait(50,t)) return; }
       if(!await wait(350,t)) return;
-      for(var r=0;r<4;r++){ rows[r].classList.add('in'); if(!await wait(140,t)) return; }
-      if(!await wait(1400,t)) return;
+      for(var r=0;r<4;r++){ rows[r].classList.add('in'); if(!await wait(130,t)) return; }
+      if(!await wait(1300,t)) return;
       setBadge(true); upgrade();
       var st=mine.querySelectorAll('.stars .icon');
-      for(var k=0;k<5;k++){ st[k].classList.remove('off'); if(!await wait(110,t)) return; }
-      if(!await wait(500,t)) return;
+      for(var k=0;k<5;k++){ st[k].classList.remove('off'); if(!await wait(100,t)) return; }
+      if(!await wait(450,t)) return;
       place();
-      if(!await wait(1150,t)) return;
+      if(!await wait(1100,t)) return;
       ping.classList.add('show');
-      if(!await wait(2800,t)) return;
+      if(!await wait(2500,t)) return;
       ping.classList.remove('show'); rows.forEach(function(el){ el.classList.remove('in'); });
-      if(!await wait(550,t)) return;
-      idx=(idx+1)%SC.length;
+      if(!await wait(500,t)) return;
     }
   }
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(still){
-    box.classList.add('static'); setTab(0); build(SC[0]); qEl.textContent=SC[0].q; setBadge(true); upgrade();
+    box.classList.add('static'); var sc0=nextScenario(); build(sc0); qEl.textContent=sc0.q; setBadge(true); upgrade();
     [].forEach.call(mine.querySelectorAll('.stars .icon'),function(s){ s.classList.remove('off'); });
     place(); rows.forEach(function(el){ el.classList.add('in'); }); ping.classList.add('show');
     return;
   }
-  setTab(0); build(SC[0]);
+  build(nextScenario());
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ loop(); } else { token++; } }); },{threshold:.25}).observe(document.querySelector('.serp-stage'));
   } else loop();

@@ -57,7 +57,7 @@ window.PROJETOS = [
     imagem: "", link: "", demo: true, mockup: "perfil"
   },
   {
-    nome: "Plaquinha NFC + QR Code de avaliações",
+    nome: "Placa de avaliação com aproximação e QR Code",
     categoria: "presenca",
     descricao: "Acesso direto à página de avaliações do Google com um toque ou leitura.",
     imagem: "", link: "", demo: true, mockup: "nfc"

@@ -553,3 +553,10 @@ h2{font-size:clamp(1.7rem,4.6vw,2.7rem);max-width:20ch}
 .cta small a{color:#c7cbd6}
 
 .vcard .avatar img{object-position:50% 50%}
+
+/* ajustes: sem abas na simulação */
+.serp-stage{height:500px}
+.serp-stage .gs{bottom:0}
+.serp-stage .stage-note{bottom:-26px}
+@media(max-width:480px){.serp-stage{height:490px}}
+.hero{padding-bottom:84px}
