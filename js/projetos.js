@@ -63,3 +63,16 @@ window.PROJETOS = [
     imagem: "", link: "", demo: true, mockup: "nfc"
   }
 ];
+
+/* =====================================================================
+   MOSTRUÁRIO — "O que eu faço, na prática" (4 blocos visuais)
+   Para trocar o modelo ilustrado por uma foto ou vídeo REAL seu:
+     imagem: "assets/portfolio/minha-foto.jpg"   ou   video: "assets/portfolio/meu-reels.mp4"
+   (vídeo curto, sem som, até ~5 MB). Deixe "" para manter o modelo desenhado.
+   ===================================================================== */
+window.MOSTRUARIO = [
+  { tipo: "video",  titulo: "Vídeos profissionais", texto: "Reels, vídeos institucionais e de produtos que prendem a atenção.", imagem: "", video: "" },
+  { tipo: "foto",   titulo: "Fotos profissionais",  texto: "Fotos de produtos, equipe e ambiente que valorizam sua empresa.",   imagem: "", video: "" },
+  { tipo: "site",   titulo: "Sites e páginas",      texto: "Seu negócio apresentado de forma clara, rápida e com botão de WhatsApp.", imagem: "", video: "" },
+  { tipo: "google", titulo: "Google e anúncios",    texto: "Perfil organizado, avaliações e campanhas para aparecer a quem procura.", imagem: "", video: "" }
+];

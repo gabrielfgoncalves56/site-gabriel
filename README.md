@@ -55,3 +55,9 @@ A prévia mostra título, descrição e imagem. Dica: abra o link uma vez no seu
 
 ## Domínio próprio no futuro
 Pages → seu projeto → **Custom domains** → Set up a domain → digite o domínio. Depois troque a URL nos arquivos (item 3) e publique de novo.
+
+## Trocar os modelos por trabalhos REAIS
+- **"Na prática" (4 blocos)** e **Portfólio** ficam em `js/projetos.js`.
+- Mostruário: preencha `imagem: "assets/portfolio/arquivo.jpg"` ou `video: "assets/portfolio/reels.mp4"` (vídeo curto, sem som, até ~5 MB). O selo "Modelo ilustrativo" some sozinho.
+- Portfólio: copie um bloco `{ ... }`, cole no topo, use `imagem` e `link` e **remova `demo: true`**.
+- Só publique trabalhos de clientes com autorização deles.

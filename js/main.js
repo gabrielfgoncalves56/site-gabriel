@@ -48,21 +48,25 @@
   var DEMOS = [
     {
       id: 'restaurante', nome: 'Restaurante', tone: ['#eadfce', '#d6c3a5'],
-      titulo: 'Restaurante: fome de ser encontrado',
-      texto: 'Quem procura onde comer decide em segundos. Perfil organizado, fotos que dão água na boca e uma página simples para mostrar o cardápio.',
-      itens: ['Perfil comercial do Google organizado', 'Fotografias profissionais de pratos', 'Vídeo promocional', 'Página de apresentação', 'Campanha de divulgação'],
+      titulo: 'Restaurante: ser a escolha de quem está com fome',
+      texto: 'Quem busca onde comer decide em segundos, olhando fotos, avaliações e o cardápio.',
+      hoje: 'Perfil incompleto, fotos escuras e sem cardápio à mão.',
+      depois: 'Perfil organizado, fotos que dão água na boca e uma página com cardápio e pedido pelo WhatsApp.',
+      itens: ['Perfil do Google completo (horário, fotos, cardápio)', 'Fotos profissionais dos pratos mais pedidos', 'Vídeo curto para Reels e anúncios', 'Página simples com cardápio e botão de pedido', 'Plaquinha NFC/QR Code na mesa e no caixa'],
       wa: 'Olá, Gabriel! Vi o exemplo de restaurante no seu site e quero algo assim para minha empresa.',
       html: function () {
-        return site('seurestaurante.com.br', 'Sabor que faz voltar', 'Cardápio, endereço e reservas em uma só página.', 'Ver cardápio', ['Prato 1', 'Prato 2', 'Prato 3']) +
+        return site('seurestaurante.com.br', 'Sabor que faz voltar', 'Cardápio, endereço e pedido em uma só página.', 'Ver cardápio', ['Prato 1', 'Prato 2', 'Prato 3']) +
           google('Restaurante Exemplo', 'Restaurante', 'Foto do prato', ['Ligar', 'Rotas', 'Cardápio']) +
           '<div class="mk mk-y"><div class="vid">' + ic('play') + '</div><small>Vídeo promocional</small></div>';
       }
     },
     {
       id: 'clinica', nome: 'Clínica', tone: ['#e2e8ee', '#c6d2dd'],
-      titulo: 'Clínica: confiança desde o primeiro clique',
-      texto: 'Pacientes pesquisam, comparam e escolhem quem passa segurança. Um site claro e o agendamento a um toque fazem diferença.',
-      itens: ['Site institucional moderno', 'Botão de agendamento pelo WhatsApp', 'Perfil do Google organizado', 'Campanhas de captação de contatos'],
+      titulo: 'Clínica: passar confiança antes da primeira consulta',
+      texto: 'O paciente pesquisa, compara avaliações e escolhe quem parece mais seguro e fácil de contatar.',
+      hoje: 'Pouca informação online e agendamento só por ligação.',
+      depois: 'Site claro com equipe e especialidades, perfil do Google atualizado e agendamento em um toque.',
+      itens: ['Site institucional com especialidades e equipe', 'Botão de agendamento pelo WhatsApp', 'Perfil do Google organizado e atualizado', 'Fotos profissionais da estrutura e do atendimento', 'Campanhas para receber novos contatos'],
       wa: 'Olá, Gabriel! Vi o exemplo de clínica no seu site e quero algo assim para minha empresa.',
       html: function () {
         return site('suaclinica.com.br', 'Cuidado com quem entende', 'Especialidades, equipe e agendamento direto.', 'Agendar pelo WhatsApp', ['Equipe', 'Estrutura', 'Atendimento']) +
@@ -73,8 +77,10 @@
     {
       id: 'loja', nome: 'Loja comercial', tone: ['#e6e3dc', '#cfcabd'],
       titulo: 'Loja: vitrine aberta o dia todo',
-      texto: 'Mostre seus produtos, divulgue ofertas e facilite a avaliação de quem já comprou, com a plaquinha na bancada.',
-      itens: ['Catálogo de produtos', 'Fotografias comerciais', 'Divulgação de ofertas', 'Campanhas de tráfego pago', 'QR Code e NFC para avaliações'],
+      texto: 'Mostre seus produtos, divulgue ofertas e facilite a avaliação de quem já comprou.',
+      hoje: 'Produtos só no balcão e poucos clientes avaliando.',
+      depois: 'Catálogo organizado, ofertas divulgadas e plaquinha na bancada levando o cliente à avaliação.',
+      itens: ['Catálogo de produtos com fotos profissionais', 'Divulgação de ofertas nas redes e no Google', 'Campanhas de tráfego pago para a loja', 'Perfil do Google com produtos cadastrados', 'Plaquinha NFC/QR Code para avaliações'],
       wa: 'Olá, Gabriel! Vi o exemplo de loja no seu site e quero algo assim para minha empresa.',
       html: function () {
         return site('sualoja.com.br', 'Catálogo e ofertas', 'Produtos organizados e pedido direto no WhatsApp.', 'Ver catálogo', ['Produto 1', 'Produto 2', 'Produto 3']) +
@@ -84,9 +90,11 @@
     },
     {
       id: 'prestador', nome: 'Prestador de serviços', tone: ['#dfe2e8', '#c3c9d4'],
-      titulo: 'Prestador de serviços: profissional à primeira vista',
-      texto: 'Eletricista, advogado, designer, mecânico: quem tem uma boa apresentação e contato fácil fecha mais conversas.',
-      itens: ['Site profissional', 'Cartão de visita digital', 'Botão de WhatsApp', 'Presença no Google'],
+      titulo: 'Prestador de serviços: contato fácil, imagem profissional',
+      texto: 'Eletricista, advogado, designer, mecânico: quem se apresenta bem e é fácil de chamar fecha mais conversas.',
+      hoje: 'Contato espalhado e nenhuma página para mostrar o trabalho.',
+      depois: 'Cartão digital, site enxuto com seus serviços e presença no Google, tudo com botão de WhatsApp.',
+      itens: ['Cartão de visita digital para enviar pelo WhatsApp', 'Site profissional com serviços e diferenciais', 'Botão de WhatsApp em todas as páginas', 'Perfil no Google para ser achado na região'],
       wa: 'Olá, Gabriel! Vi o exemplo de prestador de serviços no seu site e quero algo assim para minha empresa.',
       html: function () {
         return site('seunome.com.br', 'Serviço de confiança', 'O que faço, onde atendo e como falar comigo.', 'Chamar no WhatsApp', ['Serviço 1', 'Serviço 2', 'Serviço 3']) +
@@ -110,6 +118,8 @@
     p.innerHTML =
       '<div class="demo-info"><span class="badge">Exemplo demonstrativo · conceitual</span>' +
       '<h3>' + d.titulo + '</h3><p>' + d.texto + '</p>' +
+      '<div class="ba"><div><span>Hoje</span>' + d.hoje + '</div><div class="after"><span>Com o meu trabalho</span>' + d.depois + '</div></div>' +
+      '<h4 class="recebe">O que você recebe</h4>' +
       '<ul>' + d.itens.map(function (it) { return '<li>' + ic('check') + it + '</li>'; }).join('') + '</ul>' +
       '<a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/' + S.whatsapp + '?text=' + encodeURIComponent(d.wa) + '">' + ic('wa') + 'Quero algo assim</a></div>' +
       '<div class="mocks" style="--tone:' + d.tone[0] + ';--tone2:' + d.tone[1] + '" aria-label="Composição ilustrativa">' + d.html() + '</div>';
@@ -151,6 +161,11 @@
         (p.demo ? '<span class="demo-tag">Demonstração conceitual</span>' : '') + '</div>';
       grid.appendChild(el);
     });
+    var inv = document.createElement('article');
+    inv.className = 'proj invite';
+    inv.innerHTML = '<div class="proj-body"><span class="proj-cat">Próximo case</span><h3>O próximo projeto pode ser o seu</h3><p>Me conte o que sua empresa precisa e eu monto uma proposta sob medida.</p>' +
+      '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + window.waLink('portfolio') + '">' + ic('wa') + 'Pedir proposta</a></div>';
+    grid.appendChild(inv);
   }
   window.CATEGORIAS.forEach(function (c) {
     var b = document.createElement('button');
@@ -162,6 +177,30 @@
     filters.appendChild(b);
   });
   render();
+
+
+  /* ---------- Mostruário: o que eu faço, na prática ---------- */
+  var bento = $('#bento');
+  if (bento) {
+    var M = window.MOSTRUARIO || [];
+    var vis = {
+      video: '<div class="bv-video"><div class="ph9">' + ic('play') + '</div><i class="prog"></i><span class="chipx">Reels</span></div>',
+      foto: '<div class="bv-foto"><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><i class="flash"></i></div>',
+      site: '<div class="bv-site"><div class="bar"><i></i><i></i><i></i></div><div class="view"><div class="inner"><div class="hero2"><b></b><u></u><span></span></div><div class="row3"><i></i><i></i><i></i></div><div class="row3"><i></i><i></i><i></i></div></div></div></div>',
+      google: '<div class="bv-google"><div class="gcard"><div class="lg">SE</div><div><b>Sua Empresa</b><div class="stars">' + [1, 2, 3, 4, 5].map(function () { return ic('star'); }).join('') + '</div></div></div><div class="bars"><i style="height:30%"></i><i style="height:44%"></i><i style="height:38%"></i><i style="height:64%"></i><i style="height:100%"></i></div></div>'
+    };
+    M.forEach(function (m) {
+      var el = document.createElement('article');
+      el.className = 'bt rv';
+      var media;
+      if (m.video) media = '<video src="' + m.video + '" muted loop autoplay playsinline preload="metadata"></video>';
+      else if (m.imagem) media = '<img loading="lazy" src="' + m.imagem + '" alt="' + m.titulo + '">';
+      else media = vis[m.tipo];
+      el.innerHTML = '<div class="bt-vis">' + media + (m.video || m.imagem ? '' : '<span class="model">Modelo ilustrativo</span>') + '</div>' +
+        '<div class="bt-txt"><h3>' + m.titulo + '</h3><p>' + m.texto + '</p></div>';
+      bento.appendChild(el);
+    });
+  }
 
   /* ---------- Revelar ao rolar ---------- */
   var rv = $$('.rv');
