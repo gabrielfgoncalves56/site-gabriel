@@ -28,6 +28,7 @@
     var y = window.scrollY;
     header.classList.toggle('scrolled', y > 8);
     fab.classList.toggle('show', y > 520);
+    var dk = document.getElementById('dock'); if (dk) dk.classList.toggle('show', y > 420);
   }
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
@@ -179,28 +180,31 @@
   render();
 
 
-  /* ---------- Mostruário: o que eu faço, na prática ---------- */
-  var bento = $('#bento');
-  if (bento) {
+  /* ---------- Trilha: visuais de cada passo ---------- */
+  (function () {
     var M = window.MOSTRUARIO || [];
+    var starsH = [1, 2, 3, 4, 5].map(function () { return ic('star'); }).join('');
     var vis = {
+      plaquinha: '<img class="pl" loading="lazy" src="assets/plaquinha-azul.webp" alt="Plaquinha NFC e QR Code para avaliações no Google">',
+      perfil: '<div class="bv-perfil"><div class="gcard"><div class="lg">VC</div><div><b>Sua Empresa</b><div class="stars">' + starsH + '</div></div></div><div class="pchips"><span class="chip on">' + ic('phone') + 'Ligar</span><span class="chip">' + ic('route') + 'Rotas</span><span class="chip">' + ic('globe') + 'Site</span></div></div>',
       video: '<div class="bv-video"><div class="ph9">' + ic('play') + '</div><i class="prog"></i><span class="chipx">Reels</span></div>',
       foto: '<div class="bv-foto"><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><i class="flash"></i></div>',
       site: '<div class="bv-site"><div class="bar"><i></i><i></i><i></i></div><div class="view"><div class="inner"><div class="hero2"><b></b><u></u><span></span></div><div class="row3"><i></i><i></i><i></i></div><div class="row3"><i></i><i></i><i></i></div></div></div></div>',
-      google: '<div class="bv-google"><div class="gcard"><div class="lg">SE</div><div><b>Sua Empresa</b><div class="stars">' + [1, 2, 3, 4, 5].map(function () { return ic('star'); }).join('') + '</div></div></div><div class="bars"><i style="height:30%"></i><i style="height:44%"></i><i style="height:38%"></i><i style="height:64%"></i><i style="height:100%"></i></div></div>'
+      google: '<div class="bv-google"><div class="gcard"><div class="lg">VC</div><div><b>Sua Empresa</b><div class="stars">' + starsH + '</div></div></div><div class="bars"><i style="height:30%"></i><i style="height:44%"></i><i style="height:38%"></i><i style="height:64%"></i><i style="height:100%"></i></div></div>',
+      tudo: '<div class="bv-tudo"><span>' + ic('star') + 'Avaliações</span><span>' + ic('pin') + 'Perfil</span><span>' + ic('cam') + 'Conteúdo</span><span>' + ic('ads') + 'Anúncios</span><span>' + ic('site') + 'Site</span></div>'
     };
-    M.forEach(function (m) {
-      var el = document.createElement('article');
-      el.className = 'bt rv';
-      var media;
-      if (m.video) media = '<video src="' + m.video + '" muted loop autoplay playsinline preload="metadata"></video>';
-      else if (m.imagem) media = '<img loading="lazy" src="' + m.imagem + '" alt="' + m.titulo + '">';
-      else media = vis[m.tipo];
-      el.innerHTML = '<div class="bt-vis">' + media + (m.video || m.imagem ? '' : '<span class="model">Modelo ilustrativo</span>') + '</div>' +
-        '<div class="bt-txt"><h3>' + m.titulo + '</h3><p>' + m.texto + '</p></div>';
-      bento.appendChild(el);
+    $$('.step-vis').forEach(function (el) {
+      var tipos = el.getAttribute('data-tipo').split(','), real = false, html = '';
+      tipos.forEach(function (t) {
+        var m = M.filter(function (x) { return x.tipo === t; })[0];
+        if (m && m.video) { real = true; html += '<video src="' + m.video + '" muted loop autoplay playsinline preload="metadata"></video>'; }
+        else if (m && m.imagem) { real = true; html += '<img loading="lazy" src="' + m.imagem + '" alt="' + m.titulo + '">'; }
+        else html += vis[t];
+      });
+      if (tipos.length > 1) el.classList.add('combo');
+      el.innerHTML = html + (real || tipos[0] === 'plaquinha' || tipos[0] === 'tudo' ? '' : '<span class="model">Modelo ilustrativo</span>');
     });
-  }
+  })();
 
   /* ---------- Revelar ao rolar ---------- */
   var rv = $$('.rv');
