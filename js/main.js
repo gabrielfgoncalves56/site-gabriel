@@ -244,9 +244,9 @@
   var qEl=document.getElementById('gs-q'), badge=document.getElementById('gs-badge'), ping=document.getElementById('gs-ping'),
       tabsEl=document.getElementById('gs-tabs'), box=list.closest('.gs');
   var SC=[
-    {tab:'Floricultura', q:'floricultura em anápolis', mine:'Floricultura Santana', mi:'FS', o:'Outra floricultura', oi:'OF'},
-    {tab:'Sorveteria', q:'sorveteria em anápolis', mine:'Sorveteria Exemplo', mi:'SE', o:'Outra sorveteria', oi:'OS'},
-    {tab:'Restaurante', q:'restaurante em anápolis', mine:'Restaurante Exemplo', mi:'RE', o:'Outro restaurante', oi:'OR'}
+    {tab:'Floricultura', q:'floricultura em anápolis', mine:'Sua floricultura', mi:'VC', o:'Outra floricultura', oi:'OF'},
+    {tab:'Sorveteria', q:'sorveteria em anápolis', mine:'Sua sorveteria', mi:'VC', o:'Outra sorveteria', oi:'OS'},
+    {tab:'Restaurante', q:'restaurante em anápolis', mine:'Seu restaurante', mi:'VC', o:'Outro restaurante', oi:'OR'}
   ];
   var RH=80, GAP=10, token=0, idx=0, rows=[], mine=null;
   var STAR='<svg class="icon"><use href="#i-star"/></svg>';
