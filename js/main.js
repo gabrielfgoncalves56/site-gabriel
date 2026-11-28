@@ -225,3 +225,15 @@
     new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ go(0); play(); } else { clearInterval(t); } }); },{threshold:.35}).observe(f);
   } else play();
 })();
+
+/* ---- vídeo demonstrativo: toca só quando visível ---- */
+(function(){
+  var v=document.getElementById('demo-nfc'); if(!v) return;
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(still){ v.controls=true; return; }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ es.forEach(function(e){
+      if(e.isIntersecting){ var pr=v.play(); if(pr&&pr.catch) pr.catch(function(){ v.controls=true; }); } else v.pause();
+    }); },{threshold:.4}).observe(v);
+  } else { v.controls=true; }
+})();
