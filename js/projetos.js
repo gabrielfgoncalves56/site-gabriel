@@ -51,9 +51,9 @@ window.PROJETOS = [
     imagem: "", link: "", demo: true, mockup: "video"
   },
   {
-    nome: "Perfil do Google organizado",
+    nome: "Perfil do Google otimizado",
     categoria: "presenca",
-    descricao: "Informações, fotos, serviços e avaliações em ordem.",
+    descricao: "Perfil completo, com fotos, serviços e avaliações, pronto para ser encontrado e escolhido.",
     imagem: "", link: "", demo: true, mockup: "perfil"
   },
   {
@@ -74,5 +74,5 @@ window.MOSTRUARIO = [
   { tipo: "video",  titulo: "Vídeos profissionais", texto: "Reels, vídeos institucionais e de produtos que prendem a atenção.", imagem: "", video: "" },
   { tipo: "foto",   titulo: "Fotos profissionais",  texto: "Fotos de produtos, equipe e ambiente que valorizam sua empresa.",   imagem: "", video: "" },
   { tipo: "site",   titulo: "Sites e páginas",      texto: "Seu negócio apresentado de forma clara, rápida e com botão de WhatsApp.", imagem: "", video: "" },
-  { tipo: "google", titulo: "Google e anúncios",    texto: "Perfil organizado, avaliações e campanhas para aparecer a quem procura.", imagem: "", video: "" }
+  { tipo: "google", titulo: "Google e anúncios",    texto: "Perfil otimizado, avaliações e campanhas para aparecer a quem procura.", imagem: "", video: "" }
 ];

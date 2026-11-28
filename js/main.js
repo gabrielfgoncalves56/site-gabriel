@@ -51,8 +51,8 @@
       titulo: 'Restaurante: ser a escolha de quem está com fome',
       texto: 'Quem busca onde comer decide em segundos, olhando fotos, avaliações e o cardápio.',
       hoje: 'Perfil incompleto, fotos escuras e sem cardápio à mão.',
-      depois: 'Perfil organizado, fotos que dão água na boca e uma página com cardápio e pedido pelo WhatsApp.',
-      itens: ['Perfil do Google completo (horário, fotos, cardápio)', 'Fotos profissionais dos pratos mais pedidos', 'Vídeo curto para Reels e anúncios', 'Página simples com cardápio e botão de pedido', 'Plaquinha NFC/QR Code na mesa e no caixa'],
+      depois: 'Perfil otimizado, fotos que dão água na boca e uma página com cardápio e pedido pelo WhatsApp.',
+      itens: ['Perfil do Google otimizado (horário, fotos, cardápio)', 'Fotos profissionais dos pratos mais pedidos', 'Vídeo curto para Reels e anúncios', 'Página simples com cardápio e botão de pedido', 'Plaquinha NFC/QR Code na mesa e no caixa'],
       wa: 'Olá, Gabriel! Vi o exemplo de restaurante no seu site e quero algo assim para minha empresa.',
       html: function () {
         return site('seurestaurante.com.br', 'Sabor que faz voltar', 'Cardápio, endereço e pedido em uma só página.', 'Ver cardápio', ['Prato 1', 'Prato 2', 'Prato 3']) +
@@ -65,8 +65,8 @@
       titulo: 'Clínica: passar confiança antes da primeira consulta',
       texto: 'O paciente pesquisa, compara avaliações e escolhe quem parece mais seguro e fácil de contatar.',
       hoje: 'Pouca informação online e agendamento só por ligação.',
-      depois: 'Site claro com equipe e especialidades, perfil do Google atualizado e agendamento em um toque.',
-      itens: ['Site institucional com especialidades e equipe', 'Botão de agendamento pelo WhatsApp', 'Perfil do Google organizado e atualizado', 'Fotos profissionais da estrutura e do atendimento', 'Campanhas para receber novos contatos'],
+      depois: 'Site claro com equipe e especialidades, perfil do Google otimizado e agendamento em um toque.',
+      itens: ['Site institucional com especialidades e equipe', 'Botão de agendamento pelo WhatsApp', 'Perfil do Google otimizado para ser encontrado', 'Fotos profissionais da estrutura e do atendimento', 'Campanhas para receber novos contatos'],
       wa: 'Olá, Gabriel! Vi o exemplo de clínica no seu site e quero algo assim para minha empresa.',
       html: function () {
         return site('suaclinica.com.br', 'Cuidado com quem entende', 'Especialidades, equipe e agendamento direto.', 'Agendar pelo WhatsApp', ['Equipe', 'Estrutura', 'Atendimento']) +
