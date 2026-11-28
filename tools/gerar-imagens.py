@@ -67,7 +67,7 @@ def salvar_foto_se_existir(im, d):
         f = Image.open(p).convert("RGB")
         f = ImageOps.fit(f, (190, 190))
         m = Image.new("L", (190, 190), 0)
-        ImageDraw.Draw(m).ellipse([0, 0, 190, 190], fill=255)
+        ImageDraw.Draw(m).rounded_rectangle([0, 0, 190, 190], radius=46, fill=255)
         im.paste(f, (930, 420), m)
 
 # og principal

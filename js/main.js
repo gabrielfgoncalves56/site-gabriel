@@ -187,6 +187,7 @@
     var vis = {
       plaquinha: '<img class="pl" loading="lazy" src="assets/plaquinha-azul.webp" alt="Placa de avaliação para o Google">',
       perfil: '<div class="bv-perfil"><div class="gcard"><div class="lg">VC</div><div><b>Sua Empresa</b><div class="stars">' + starsH + '</div></div></div><div class="pchips"><span class="chip on">' + ic('phone') + 'Ligar</span><span class="chip">' + ic('route') + 'Rotas</span><span class="chip">' + ic('globe') + 'Site</span></div></div>',
+      reel: '<div class="reelwrap"><video muted loop playsinline preload="metadata" poster="assets/video/captacao.jpg" aria-label="Captação de fotos e vídeos no local e o resultado final"><source src="assets/video/captacao.mp4" type="video/mp4"></video><span class="phase">Captação</span></div>',
       video: '<div class="bv-video"><div class="ph9">' + ic('play') + '</div><i class="prog"></i><span class="chipx">Reels</span></div>',
       foto: '<div class="bv-foto"><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><div class="ph">' + ic('cam') + '</div><i class="flash"></i></div>',
       site: '<div class="bv-site"><div class="bar"><i></i><i></i><i></i></div><div class="view"><div class="inner"><div class="hero2"><b></b><u></u><span></span></div><div class="row3"><i></i><i></i><i></i></div><div class="row3"><i></i><i></i><i></i></div></div></div></div>',
@@ -202,7 +203,7 @@
         else html += vis[t];
       });
       if (tipos.length > 1) el.classList.add('combo');
-      el.innerHTML = html + (real || tipos[0] === 'plaquinha' || tipos[0] === 'tudo' ? '' : '<span class="model">Modelo ilustrativo</span>');
+      el.innerHTML = html + (real || tipos[0] === 'plaquinha' || tipos[0] === 'tudo' || tipos[0] === 'reel' ? '' : '<span class="model">Modelo ilustrativo</span>');
     });
   })();
 
@@ -318,4 +319,18 @@
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ loop(); } else { token++; } }); },{threshold:.25}).observe(document.querySelector('.serp-stage'));
   } else loop();
+})();
+
+/* ---- vídeo de captação (passo 3): toca visível, troca o rótulo Captação/Resultado ---- */
+(function(){
+  var v=document.querySelector('.reelwrap video'); if(!v) return;
+  var chip=v.parentNode.querySelector('.phase');
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  v.addEventListener('timeupdate',function(){ var r=v.currentTime>=3; chip.textContent=r?'Resultado':'Captação'; chip.classList.toggle('res',r); });
+  if(still){ v.controls=true; return; }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ es.forEach(function(e){
+      if(e.isIntersecting){ var p=v.play(); if(p&&p.catch) p.catch(function(){ v.controls=true; }); } else v.pause();
+    }); },{threshold:.4}).observe(v);
+  } else { v.controls=true; }
 })();
